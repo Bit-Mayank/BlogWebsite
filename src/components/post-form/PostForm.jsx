@@ -3,7 +3,8 @@ import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, Select, RTE } from "../index";
 import appwriteService from "../../appwrite/config";
-import { useNavigate } from "react-router-dom"; import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -17,6 +18,8 @@ function PostForm({ post }) {
 
     const navigate = useNavigate();
     const userData = useSelector(state => state.auth.userData);
+
+    // console.log(userData.$id)
 
     const submit = async (data) => {
         if (post) {
